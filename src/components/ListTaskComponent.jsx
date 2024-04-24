@@ -39,7 +39,7 @@ export async function ListTaskComponent({ workspaceId, status }) {
           >
             <h3 className="text-2xl mb-2">{data?.taskTitle}</h3>
             <p className="mb-6">{data?.tag}</p>
-            <div className="bg-blue-100 text-blue-600 p-2 mb-2 rounded-lg">
+            <div className="bg-blue-100 text-blue-600 p-2 mb-2 rounded-lg text-center">
               <p className="text-1xl  block">{getStatusText(data?.status)}</p>
             </div>
             <hr className="flex-grow border-t border-blue-300 mb-2" />

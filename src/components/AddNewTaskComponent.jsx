@@ -1,7 +1,27 @@
+import { InsertTaskService } from "@/service/task.service";
 import Image from "next/image";
 import React from "react";
 
-export default function AddNewTaskComponent() {
+export default function AddNewTaskComponent({id}) {
+  async function handleTask(taskInfo) {
+    "use server";
+    console.log("user input ", taskInfo);
+    // define structure object
+    const newTaskInfo = {
+      taskTitle: taskInfo.get("taskTitle"),
+      description: taskInfo.get("description"),
+       startDate: taskInfo.get("startDate"),
+      dueDate: "dueDate",
+      tag: taskInfo.get("tag"),
+      status: 1,
+      workspaceId: id
+    };
+    // calling next auth service and passing " newUseInfo "
+    console.log(newTaskInfo);
+    const data = await InsertTaskService(newTaskInfo);
+    console.log("data", data);
+  }
+
   return (
     <div>
       <label htmlFor="my_modal_7" className="cursor-pointer">
@@ -90,14 +110,14 @@ export default function AddNewTaskComponent() {
             </div>
           </form>
         </div>
-        {/* <label className="modal-backdrop" htmlFor="my_modal_7">
+        <label className="modal-backdrop" htmlFor="my_modal_7">
           Close
-        </label> */}
-        {/* <label className="modal-backdrop" htmlFor="my_modal_7">
+        </label>
+        <label className="modal-backdrop" htmlFor="my_modal_7">
           <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
             ✕
           </button>
-        </label> */}
+        </label>
       </div>
     </div>
   );

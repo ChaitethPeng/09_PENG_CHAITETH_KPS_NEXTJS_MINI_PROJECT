@@ -26,9 +26,7 @@ const Register = () => {
   return (
     <main>
       <div className=" mt-10 mx-auto">
-      
-          
-          
+
        
         <form
           className=" w-auto gap-10 flex justify-center"
