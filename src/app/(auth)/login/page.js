@@ -2,6 +2,7 @@
 
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -26,7 +27,11 @@ const LoginPage = () => {
   return (
     <main>
       <section className="bg-gray-50 dark:bg-gray-900 mx-w-auto">
-        <div className="mx-w-auto flex flex-col-2 items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 ">
+      <div className="mx-w-auto  px-6 mx-auto">
+        <div>  <Image className="mb-10" src={"/assets/icons/logo.svg"} width={150} height={100} /></div>
+    
+        <div className="mx-w-auto flex flex-col-2 items-center justify-center px-6 mx-auto  lg:py-0 ">
+       
           <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
@@ -88,15 +93,16 @@ const LoginPage = () => {
               </div>
               <button
                   type=""
-                  className="w-full text-black border-black  bg-white-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  className="w-full text-black border-black bg-slate-200  hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                 >
                   Google
                 </button>
             </div>
           </div>
           <div className="image w-1/2 flex justify-center ">
-            <img className="h-[70vh]" src="/assets/icons/login.svg" alt="" />
+            <img className="h-[60vh]" src="/assets/icons/login.svg" alt="" />
           </div>
+        </div>
         </div>
       </section>
     </main>

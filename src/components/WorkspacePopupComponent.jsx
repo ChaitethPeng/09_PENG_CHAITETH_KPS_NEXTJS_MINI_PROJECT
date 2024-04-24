@@ -1,4 +1,4 @@
-import { InsertWorkspaceService } from "@/app/service/workplace.service";
+import { InsertWorkspaceService } from "@/service/workplace.service";
 import { revalidateTag } from "next/cache";
 import Image from "next/image";
 import React from "react";

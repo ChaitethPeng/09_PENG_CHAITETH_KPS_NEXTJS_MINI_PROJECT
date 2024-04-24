@@ -1,8 +1,10 @@
-"use client";
+'use client'
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
+
+
 
 export default function NavbarComponent() {
   const pathname = usePathname();
@@ -146,7 +148,7 @@ export default function NavbarComponent() {
               </li>
 
               <li>
-                <Link
+                <Link 
                   href="/todo-board"
                   className=" flex gap-2 py-2 px-3 text-gray rounded md:bg-transparent  md:p-0 md:dark:text-blue-500"
                   aria-current="page"

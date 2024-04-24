@@ -1,4 +1,4 @@
-import { POST } from "../api/auth/[...nextauth]/route";
+import { POST } from "../app/api/auth/[...nextauth]/route";
 
 export const loginService = async (userInfo) => {
   try {

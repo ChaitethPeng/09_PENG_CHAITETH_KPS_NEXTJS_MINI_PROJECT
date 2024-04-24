@@ -1,10 +1,11 @@
 import { getServerSession } from "next-auth";
-import { authOption } from "../api/auth/[...nextauth]/route";
+import { authOption } from "../app/api/auth/[...nextauth]/route";
 
 
-const session = await getServerSession(authOption);
 
 export async function getAllWorkspace() {
+const session = await getServerSession(authOption);
+
   const res = await fetch("http://110.74.194.123:8989/api/todo/v1/workspaces", {
     headers: {
       Authorization: `Bearer ${session?.user?.token}`, // Include the token in the request headers
@@ -16,6 +17,7 @@ export async function getAllWorkspace() {
 }
 
 export const InsertWorkspaceService = async ({workspacename}) => {
+const session = await getServerSession(authOption);
  
   try {
     const res = await fetch(
@@ -38,18 +40,19 @@ export const InsertWorkspaceService = async ({workspacename}) => {
   }
 };
 
-export const DeleteWorkspaceService = async ({workspaceId}) => {
+export const DeleteWorkspaceService = async (workspaceId) => {
+  console.log("work",workspaceId)
+const session = await getServerSession(authOption);
  
   try {
     const res = await fetch(
-      `http://110.74.194.123:8989/api/todo/v1/workspaces/workspaceId/${workspaceId}`,
+      `http://110.74.194.123:8989/api/todo/v1/workspaces/${workspaceId}`,
       {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${session?.user?.token}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(workspaceId),
       }
     );
     const data = await res.json();

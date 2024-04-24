@@ -1,45 +1,34 @@
 import React from "react";
-import { getAllWorkspace } from "@/app/service/workplace.service";
+import { getAllWorkspace } from "@/service/workplace.service";
 import EditDeleteDropDownComponent from "./EditDeleteDropDownComponent";
+import Link from "next/link";
 
 export async function ListWorkSpaceComponent() {
   const workspaces = await getAllWorkspace();
+  const getIcon = (id) => {
+    switch (id/2) {
+      case 0:
+        return <img className="w-5 h-5" src="https://icons8.com/icon/18722/circled" alt="" />  
+      case 1:
+        return <img  className="w-5 h-5" src="https://img.icons8.com/?size=50&id=37601&format=png" alt="" />
+      default:
+        return <img className="w-5 h-5" src="https://img.icons8.com/?size=48&id=0IQZQ1dRTUJD&format=png" alt="" /> ;
+    }
+  };
+  
 
   return (
     <table className=" w-full  text-left rtl:text-right text-gray-500 dark:text-gray-400 space-y-1 > * ">
       <tbody>
         {workspaces.data.map((data, index) => (
           <tr key={index}>
-            <td className="w-8">
-          
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g clip-path="url(#clip0_1_1789)">
-                  <circle
-                    cx="12"
-                    cy="12"
-                    r="9"
-                    stroke="#CD0000"
-                    stroke-width="2"
-                  />
-                </g>
-                <defs>
-                  <clipPath id="clip0_1_1789">
-                    <rect width="24" height="24" fill="white" />
-                  </clipPath>
-                </defs>
-              </svg>
-            </td>
-            <td>{data?.workspaceName}</td>
+            
+            <td>{getIcon(data?.workSpaceId)}</td>
+            <Link href={`/todo-list/${data?.workSpaceId}`}> <td>{data?.workspaceName}</td> </Link>
             <td>
               <EditDeleteDropDownComponent id={data?.workSpaceId} />
             </td>
-          </tr>
+          </tr>  
         ))}
       </tbody>
     </table>

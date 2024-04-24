@@ -1,7 +1,6 @@
 
 import Image from "next/image";
 import React from "react";
-import EditDeleteDropDownComponent from "./EditDeleteDropDownComponent";
 import WorkspacePopupComponent from "./WorkspacePopupComponent";
 import ListWorkSpaceComponent from "./ListWorkSpace";
 
